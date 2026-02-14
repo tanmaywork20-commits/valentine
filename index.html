@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Will You Be My Valentine?</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff6a88, #ff99ac);
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .yes {
+      background-color: white;
+      color: #ff4d6d;
+    }
+
+    .absolutely {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+    
+    .floating {
+  position: fixed;
+  width: 250px;
+  opacity: 0.5;
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating2 {
+  position: fixed;
+  width: 220px;
+  opacity: 0.5;
+  right: 10%;
+  bottom: 10%;
+  z-index: -1;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<img src="kuromi1.png" class="floating kuromi" style="top:10%; left:5%;">
+<img src="kuromi2.png" class="floating kuromi" style="bottom:10%; right:5%;">
+<img src="kuromi1.png" class="floating kuromi" style="top:15%; right:5%;">
+<img src="kuromi2.png" class="floating kuromi" style="bottom:15%; left:5%;">
+
+
+  <h1>Anmol,Will You Be My Valentine? ❤️</h1>
+
+  <div id="buttons">
+    <button class="yes" onclick="celebrate()">Yes</button>
+    <button class="absolutely" onclick="celebrate()">Absolutely Yes</button>
+  </div>
+
+  <h2 id="message" class="hidden">
+    🎉 Congratulations! You are officially my Valentine! 💖
+  </h2>
+  
+  <img src="proposal.png" 
+     id="proposalImage" 
+     class="hidden" 
+     style="width:350px; margin-top:30px;">
+
+  <script>
+  function celebrate() {
+
+  // Hide buttons
+  document.getElementById("buttons").style.display = "none";
+
+  // Hide all Kuromi images
+  const kuromis = document.querySelectorAll(".kuromi");
+  kuromis.forEach(function(img) {
+    img.style.display = "none";
+  });
+
+  // Show congratulations message
+  document.getElementById("message").classList.remove("hidden");
+
+  // Show proposal image
+  document.getElementById("proposalImage").classList.remove("hidden");
+
+  // Confetti animation
+  confetti({
+    particleCount: 200,
+    spread: 100,
+    origin: { y: 0.6 }
+  });
+}
+</script>
